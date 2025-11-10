@@ -57,14 +57,25 @@
 
   #player-container {
     width: 100%;
+    max-width: 900px;
+    margin: auto;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  video {
+    width: 100%;
     height: 70vh;
     background: #000;
   }
 
-  #stream-iframe {
-    width: 100%;
-    height: 100%;
+  #quality-select {
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 6px;
     border: none;
+    font-size: 16px;
   }
 </style>
 </head>
@@ -75,9 +86,13 @@
 <div class="file-container" id="channelContainer"></div>
 
 <div id="player-container">
-  <iframe id="stream-iframe" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  <video id="tv-player" controls autoplay></video>
+  <select id="quality-select">
+    <option value="">Select Quality</option>
+  </select>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
 const channels = [
     {"id":"ColorsHD","channel_name": "Colors HD","logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/Colors_HD.png"},
@@ -90,7 +105,9 @@ const channels = [
 ];
 
 const container = document.getElementById('channelContainer');
-const iframe = document.getElementById('stream-iframe');
+const video = document.getElementById('tv-player');
+const qualitySelect = document.getElementById('quality-select');
+let hls;
 
 container.innerHTML = channels.map(channel => `
   <div class="directory-item" data-id="${channel.id}">
@@ -99,16 +116,45 @@ container.innerHTML = channels.map(channel => `
   </div>
 `).join('');
 
-// Handle click to play in iframe
+// Function to load channel
+function loadChannel(channelId) {
+    const url = `https://nettv.fun/jh/stream.php?id=JC_${encodeURIComponent(channelId)}&sr=JCHLS&chunks=JC_${encodeURIComponent(channelId)}-audio_98835_hin%3D98800-video%3D301200.m3u8`;
+
+    if (hls) {
+        hls.destroy();
+        hls = null;
+    }
+
+    if (Hls.isSupported()) {
+        hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            const levels = hls.levels.map((level, index) => ({
+                index,
+                height: level.height,
+                bitrate: level.bitrate
+            }));
+            qualitySelect.innerHTML = '<option value="">Auto</option>' + levels.map(l => 
+                `<option value="${l.index}">${l.height}p - ${Math.round(l.bitrate/1000)} kbps</option>`
+            ).join('');
+        });
+
+        qualitySelect.onchange = function() {
+            const level = qualitySelect.value === "" ? -1 : parseInt(qualitySelect.value);
+            hls.currentLevel = level;
+        };
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = url;
+    }
+}
+
+// Click on channel
 container.addEventListener('click', function(e) {
     const card = e.target.closest('.directory-item');
     if (!card) return;
-
     const channelId = card.getAttribute('data-id');
-    if (!channelId) return;
-
-    const key = encodeURIComponent(channelId);
-    iframe.src = `https://nettv.fun/jh/stream.php?id=JC_${key}&sr=JCHLS&chunks=JC_${key}-audio_98835_hin%3D98800-video%3D301200.m3u8`;
+    loadChannel(channelId);
 });
 </script>
 
