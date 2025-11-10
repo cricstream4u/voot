@@ -1,216 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JOIN TV4WAP LIVE4WAP VOOT JIOCINEMA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voot by CineArena</title>
+  <link rel="icon" href="" type="image/x-icon" />
 
-<style>
-/* ========== Global Reset ========== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
-}
+  <style>
+    :root {
+      --bg-dark: #121212;
+      --bg-medium: #1E1E1E;
+      --text-primary: #FFFFFF;
+      --text-secondary: #B0B0B0;
+      --telegram-primary: #0088cc;
+      --telegram-hover: #0370a7;
+      --transition-speed: 0.3s;
+    }
 
-/* ========== Colors ========== */
-:root {
-  --bg-dark: #0f0f0f;
-  --bg-card: #1a1a1a;
-  --accent: #ffcc00;
-  --accent2: #ff4141;
-  --text: #fff;
-  --text-light: #bbb;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* ========== Body ========== */
-body {
-  background-color: var(--bg-dark);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    body {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
 
-/* ========== Header Buttons ========== */
-.telegram-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  padding: 8px 0;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-}
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 20px;
+      width: 100%;
+    }
 
-.telegram-header a {
-  text-decoration: none;
-  color: #000;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: 0.3s ease;
-}
+    /* Top Telegram Links */
+    .telegram-btn {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      z-index: 1000;
+    }
 
-.telegram-header a:hover {
-  background: rgba(255,255,255,0.3);
-}
+    .telegram-btn a {
+      flex: 1;
+      padding: 10px;
+      text-decoration: none;
+      color: black;
+      font-weight: 900;
+    }
 
-/* ========== Search Bar ========== */
-.search-bar {
-  width: 90%;
-  max-width: 500px;
-  margin: 15px auto;
-  display: flex;
-  align-items: center;
-  background: var(--bg-card);
-  border-radius: 6px;
-  box-shadow: 0 0 5px rgba(255,255,255,0.1);
-}
+    .telegram-btn a:first-child {
+      background-color: red;
+      color: gold;
+    }
 
-.search-bar input {
-  width: 100%;
-  padding: 10px 15px;
-  background: transparent;
-  border: none;
-  color: var(--text);
-  font-size: 1rem;
-  outline: none;
-}
+    .telegram-btn a:last-child {
+      background-color: green;
+      color: white;
+    }
 
-/* ========== Channel Grid ========== */
-.file-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 15px;
-  width: 95%;
-  margin: 10px auto 80px;
-}
+    /* Search bar */
+    .search-bar {
+      margin-top: 60px;
+      text-align: center;
+      padding: 10px;
+    }
 
-.directory-item {
-  background-color: var(--bg-card);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  text-align: center;
-  cursor: pointer;
-  padding: 15px 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-}
+    .search-bar input {
+      width: 90%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      text-align: center;
+    }
 
-.directory-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-}
+    /* Channel Grid */
+    .file-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+      width: 100%;
+      margin-top: 10px;
+    }
 
-.directory-item img {
-  width: 100%;
-  height: 120px;
-  object-fit: contain;
-  margin-bottom: 8px;
-  transition: transform 0.3s;
-}
+    .directory-item {
+      background-color: var(--bg-medium);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
 
-.directory-item:hover img {
-  transform: scale(1.1);
-}
+    .directory-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    }
 
-.directory-item b {
-  display: block;
-  color: var(--text);
-  font-weight: 500;
-  font-size: 0.95rem;
-}
+    .directory-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 2px solid gold;
+    }
 
-/* ========== Footer ========== */
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: var(--bg-card);
-  color: var(--text-light);
-  text-align: center;
-  padding: 8px 0;
-  border-top: 2px solid var(--accent);
-}
+    .directory-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 10px 0;
+      display: block;
+      width: 100%;
+      font-weight: 600;
+    }
 
-footer a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
+    /* Footer */
+    .content-table {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: gold;
+      color: black;
+      text-align: center;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 5px 0;
+      z-index: 1000;
+    }
 
-footer a:hover {
-  color: var(--accent2);
-}
+    .content-table a {
+      color: black;
+      text-decoration: none;
+      font-weight: 700;
+    }
 
-/* ========== Responsive Tweaks ========== */
-@media (max-width: 600px) {
-  .directory-item img { height: 90px; }
-  .directory-item b { font-size: 0.8rem; }
-  .telegram-header a { font-size: 0.75rem; padding: 4px 6px; }
-}
-</style>
+    @media (max-width: 768px) {
+      .file-container {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+      .directory-item img {
+        height: 140px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .file-container {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      }
+      .directory-item img {
+        height: 120px;
+      }
+      .directory-item a {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Telegram Top Links -->
+  <div class="telegram-btn">
+    <a href="https://t.me/tvgotk">LIVE4WAP</a>
+    <a href="https://t.me/tv4wap">TV4WAP</a>
+  </div>
 
-<!-- Header Links -->
-<div class="telegram-header">
-  <a href="https://t.me/tvgotk" target="_blank">LIVE4WAP</a>
-  <a href="https://t.me/tv4wap" target="_blank">TV4WAP</a>
-</div>
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="🔍 Search Channels" onkeyup="searchChannels()">
+  </div>
 
-<!-- Search Bar -->
-<div class="search-bar">
-  <input type="text" id="search-input" placeholder="🔍 Search Channels..." onkeyup="searchChannels()">
-</div>
+  <!-- Channel Container -->
+  <div class="container">
+    <div id="app" class="file-container">
+      <p style="color: #aaa; text-align:center;">Loading channels...</p>
+    </div>
+  </div>
 
-<!-- Channel Grid -->
-<div id="app" class="file-container"></div>
+  <!-- Footer -->
+  <div class="content-table">
+    <a href="https://t.me/tvgotk">t.me/tvgotk</a>
+    <a href="https://t.me/tv4wap">t.me/tv4wap</a>
+  </div>
 
-<!-- Footer -->
-<footer>
-  ❤️ Join us on <a href="https://t.me/tvgotk" target="_blank">@tvgotk</a> & <a href="https://t.me/tv4wap" target="_blank">@tv4wap</a>
-</footer>
+  <!-- Script: Load Channels -->
+  <script>
+    function getData() {
+      fetch("https://tvgo.neocities.org/Json/voot.txt") // change to voot.json if renamed
+        .then(res => {
+          if (!res.ok) throw new Error("Network response was not ok");
+          return res.json();
+        })
+        .then(json => {
+          if (!Array.isArray(json)) {
+            console.error("Expected array, got:", json);
+            document.querySelector("#app").innerHTML =
+              "<p style='color:red;text-align:center;'>Invalid data format.</p>";
+            return;
+          }
 
-<!-- JSON Fetch Script -->
-<script>
-function getData() {
-  fetch("https://tvgo.neocities.org/Json/voot.txt")
-    .then(res => res.json())
-    .then(json => {
-      const html = json.map(item => `
-        <div class="directory-item" data-name="${item.title}">
-          <a href="https://tvgo.neocities.org/APPTV/voot?id=${item.channel_name}">
-            <img src="${item.logo}" alt="${item.channel_name}">
-          </a>
-          <b>${item.channel_name}</b>
-        </div>
-      `).join('');
-      document.getElementById("app").innerHTML = html;
-    })
-    .catch(error => console.error(error));
-}
-getData();
+          const html = json.map(item => `
+            <div data-name="${item.channel_name}" class="directory-item">
+              <a href="https://tvgo.neocities.org/APPTV/voot?id=${item.id}">
+                <img src="${item.logo}" alt="${item.channel_name}">
+              </a>
+              <a href="https://tvgo.neocities.org/APPTV/voot?id=${item.id}">
+                <b>${item.channel_name}</b>
+              </a>
+            </div>
+          `).join("");
 
-function searchChannels() {
-  const input = document.getElementById('search-input').value.toLowerCase();
-  const channels = document.querySelectorAll('.directory-item');
-  channels.forEach(channel => {
-    const name = channel.getAttribute('data-name').toLowerCase();
-    channel.style.display = name.includes(input) ? 'block' : 'none';
-  });
-}
-</script>
+          document.querySelector("#app").innerHTML = html;
+        })
+        .catch(error => {
+          console.error("Error loading channels:", error);
+          document.querySelector("#app").innerHTML =
+            "<p style='color:red;text-align:center;'>Failed to load channels. Please check your JSON URL.</p>";
+        });
+    }
 
+    // Search function
+    function searchChannels() {
+      var input = document.getElementById('search-input').value.toLowerCase();
+      var channels = document.querySelectorAll('.directory-item');
+      channels.forEach(function (channel) {
+        var name = channel.getAttribute('data-name').toLowerCase();
+        channel.style.display = name.includes(input) ? 'block' : 'none';
+      });
+    }
+
+    // Load on page start
+    getData();
+  </script>
 </body>
 </html>
