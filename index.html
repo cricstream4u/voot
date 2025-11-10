@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JOIN TV4WAP LIVE4WAP VOOT JIOCINEMA</title>
+
+<style>
+/* ========== Global Reset ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+/* ========== Colors ========== */
+:root {
+  --bg-dark: #0f0f0f;
+  --bg-card: #1a1a1a;
+  --accent: #ffcc00;
+  --accent2: #ff4141;
+  --text: #fff;
+  --text-light: #bbb;
+}
+
+/* ========== Body ========== */
+body {
+  background-color: var(--bg-dark);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ========== Header Buttons ========== */
+.telegram-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  padding: 8px 0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}
+
+.telegram-header a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+.telegram-header a:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ========== Search Bar ========== */
+.search-bar {
+  width: 90%;
+  max-width: 500px;
+  margin: 15px auto;
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(255,255,255,0.1);
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 15px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+}
+
+/* ========== Channel Grid ========== */
+.file-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  width: 95%;
+  margin: 10px auto 80px;
+}
+
+.directory-item {
+  background-color: var(--bg-card);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-align: center;
+  cursor: pointer;
+  padding: 15px 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.directory-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+.directory-item img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  transition: transform 0.3s;
+}
+
+.directory-item:hover img {
+  transform: scale(1.1);
+}
+
+.directory-item b {
+  display: block;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* ========== Footer ========== */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--bg-card);
+  color: var(--text-light);
+  text-align: center;
+  padding: 8px 0;
+  border-top: 2px solid var(--accent);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+footer a:hover {
+  color: var(--accent2);
+}
+
+/* ========== Responsive Tweaks ========== */
+@media (max-width: 600px) {
+  .directory-item img { height: 90px; }
+  .directory-item b { font-size: 0.8rem; }
+  .telegram-header a { font-size: 0.75rem; padding: 4px 6px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header Links -->
+<div class="telegram-header">
+  <a href="https://t.me/tvgotk" target="_blank">LIVE4WAP</a>
+  <a href="https://t.me/tv4wap" target="_blank">TV4WAP</a>
+</div>
+
+<!-- Search Bar -->
+<div class="search-bar">
+  <input type="text" id="search-input" placeholder="🔍 Search Channels..." onkeyup="searchChannels()">
+</div>
+
+<!-- Channel Grid -->
+<div id="app" class="file-container"></div>
+
+<!-- Footer -->
+<footer>
+  ❤️ Join us on <a href="https://t.me/tvgotk" target="_blank">@tvgotk</a> & <a href="https://t.me/tv4wap" target="_blank">@tv4wap</a>
+</footer>
+
+<!-- JSON Fetch Script -->
+<script>
+function getData() {
+  fetch("https://tvgo.neocities.org/Json/voot.txt")
+    .then(res => res.json())
+    .then(json => {
+      const html = json.map(item => `
+        <div class="directory-item" data-name="${item.title}">
+          <a href="https://tvgo.neocities.org/APPTV/voot?id=${item.channel_name}">
+            <img src="${item.logo}" alt="${item.channel_name}">
+          </a>
+          <b>${item.channel_name}</b>
+        </div>
+      `).join('');
+      document.getElementById("app").innerHTML = html;
+    })
+    .catch(error => console.error(error));
+}
+getData();
+
+function searchChannels() {
+  const input = document.getElementById('search-input').value.toLowerCase();
+  const channels = document.querySelectorAll('.directory-item');
+  channels.forEach(channel => {
+    const name = channel.getAttribute('data-name').toLowerCase();
+    channel.style.display = name.includes(input) ? 'block' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
