@@ -1,254 +1,265 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Voot by CineArena</title>
-  <link rel="icon" href="" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JOIN TV4WAP LIVE4WAP VOOT JIOCINEMA </title>
+    <link rel="icon" href="" type="image/x-icon" />
+  
+    
 
-  <style>
-    :root {
-      --bg-dark: #121212;
-      --bg-medium: #1E1E1E;
-      --text-primary: #FFFFFF;
-      --text-secondary: #B0B0B0;
-      --telegram-primary: #0088cc;
-      --telegram-hover: #0370a7;
-      --transition-speed: 0.3s;
-    }
+<style>
+.active{background:red}
+.fix{visibility:hidden}
+.fixed{background:gold;position:fixed}
+.tab-pane{overflow: hidden;
+  border: 1px solid #fff;
+  background-color: #f1f1f1;align:center;vertical-align:middle;vertical-align:middle;align:center;align-items:center;vertical-align:middle;horizontal-align:middle;} 
+  
+ .tab-content{background:SeaShell;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding-top: 10px;  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 64px;
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  transition: 0.3s;
+  font-size: 9px;align:center;vertical-align:middle;vertical-align:middle;align:center;align-items:center;vertical-align:middle;horizontal-align:middle;width:100%}
 
-    body {
-      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-primary);
-      line-height: 1.6;
-    }
+</style>
 
-    .container {
-      max-width: 1600px;
-      margin: 0 auto;
-      padding: 20px;
-      width: 100%;
-    }
+<style>
+a:link, a:visited {color: white;
+  
 
-    /* Top Telegram Links */
-    .telegram-btn {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: gold;
-      color: black;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      text-align: center;
-      z-index: 1000;
-    }
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
 
-    .telegram-btn a {
-      flex: 1;
-      padding: 10px;
-      text-decoration: none;
-      color: black;
-      font-weight: 900;
-    }
+a:hover, a:active {
+  color: black;
+}
+    
+        :root {
+            --bg-dark: #121212;
+            --bg-medium: #1E1E1E;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --telegram-primary: #0088cc;
+            --telegram-hover: #0370a7;
+            --transition-speed: 0.3s;
+        }
 
-    .telegram-btn a:first-child {
-      background-color: red;
-      color: gold;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .telegram-btn a:last-child {
-      background-color: green;
-      color: white;
-    }
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
 
-    /* Search bar */
-    .search-bar {
-      margin-top: 60px;
-      text-align: center;
-      padding: 10px;
-    }
+        .container {align:center;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
 
-    .search-bar input {
-      width: 90%;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      font-size: 16px;
-      text-align: center;
-    }
+        
 
-    /* Channel Grid */
-    .file-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 20px;
-      width: 100%;
-      margin-top: 10px;
-    }
+        .telegram-btn {position: fixed;
+            background-color: gold;
+            
+            padding: 2px 2px;
+            
+            text-decoration: none;
+            
+            transition: all 0.2s ease;
+            
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            white-space: nowrap;
+            width: 100%;
+            flex-shrink: 0;
+        }
+.telegram-btn1 {
+            background-color:red;
+            color: gold;
+            padding: 2px 2px;
+            border-radius: 0px;
+            text-decoration: none;
+            font-weight: 900;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            
+            flex-shrink: 0;
+        }
+.telegram-btn2 {
+            background-color: green;
+            color:red;
+            padding: 2px 2px;
+            border-radius: 0px;
+            text-decoration: none;
+            font-weight: 900;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            
+            flex-shrink: 0;
+        }
 
-    .directory-item {
-      background-color: var(--bg-medium);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
+        
 
-    .directory-item:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
-    }
+        .file-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
 
-    .directory-item img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-bottom: 2px solid gold;
-    }
+        .directory-item {
+            background-color: var(--bg-medium);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
 
-    .directory-item a {
-      color: var(--text-primary);
-      text-decoration: none;
-      font-size: 1rem;
-      padding: 10px 0;
-      display: block;
-      width: 100%;
-      font-weight: 600;
-    }
+        .directory-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
 
-    /* Footer */
-    .content-table {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: gold;
-      color: black;
-      text-align: center;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 5px 0;
-      z-index: 1000;
-    }
+        .directory-item img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
 
-    .content-table a {
-      color: black;
-      text-decoration: none;
-      font-weight: 700;
-    }
+        .directory-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;  /* Changed from 500 to 400 for lighter font weight */
+            width: 100%;
+        }
 
-    @media (max-width: 768px) {
-      .file-container {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      }
-      .directory-item img {
-        height: 140px;
-      }
-    }
+        .directory-item b {
+            font-weight: 500;  /* Changed from default bold to 400 for lighter font weight */
+        }
 
-    @media (max-width: 480px) {
-      .file-container {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      }
-      .directory-item img {
-        height: 120px;
-      }
-      .directory-item a {
-        font-size: 0.85rem;
-      }
-    }
-  </style>
+        @media (max-width: 768px) {
+            .file-container {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                gap: 10px;
+            }
+
+            .directory-item {
+                padding: 10px;
+            }
+
+            .directory-item img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .directory-item a {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .file-container {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                gap: 10px;
+            }
+
+            .directory-item {
+                padding: 10px;
+            }
+
+            .directory-item img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .directory-item a {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+  
 </head>
-
 <body>
-  <!-- Telegram Top Links -->
-  <div class="telegram-btn">
-    <a href="https://t.me/tvgotk">LIVE4WAP</a>
-    <a href="https://t.me/tv4wap">TV4WAP</a>
-  </div>
+    
+        
+            <table class="telegram-btn"><tr><td class="telegram-btn1" width="50%"><a href="https://t.me/tvgotk">LIVE4WAP </a></td><td class="telegram-btn2" width="50%"><a href="https://t.me/tv4wap">TV4WAP </a></td></tr></table>
+ <table class="telegram-btn1"><tr><td class="telegram-btn1" width="50%"><a href="https://t.me/tvgotk">LIVE4WAP </a></td><td class="telegram-btn2" width="50%"><a href="https://t.me/tv4wap">TV4WAP </a></td></tr></table>
+ 
+   <div class="search-bar"> <input type="text" id="search-input" placeholder="Search Channels" onkeyup="searchChannels()"></div>
 
-  <!-- Search Bar -->
-  <div class="search-bar">
-    <input type="text" id="search-input" placeholder="🔍 Search Channels" onkeyup="searchChannels()">
-  </div>
+ 
+<div class="tab-content">
+  <div class="tab-pane">
+<div class="container">
+<div id="app" class="file-container"> </div>
+</div></div></div>
 
-  <!-- Channel Container -->
-  <div class="container">
-    <div id="app" class="file-container">
-      <p style="color: #aaa; text-align:center;">Loading channels...</p>
-    </div>
-  </div>
 
-  <!-- Footer -->
-  <div class="content-table">
-    <a href="https://t.me/tvgotk">t.me/tvgotk</a>
-    <a href="https://t.me/tv4wap">t.me/tv4wap</a>
-  </div>
+<script>function getData() {fetch("https://tvgo.neocities.org/Json/voot.txt") .then(res => {return res.json(); })  .then(json => {console.log(json.data);const html  = json  .map(function(item) { return  "<div data-name='" + item.title + "' class='directory-item'><a href='https://tvgo.neocities.org/APPTV/voot?id="+item.channel_name+"'><img src='"+item.logo+"'></a><a href='https://tvgo.neocities.org/APPTV/voot?id="+item.channel_name+"'><b>"+item.channel_name+"</b></a></div>"; }) .join(""); console.log(html);document.querySelector("#app" ).insertAdjacentHTML("afterbegin", html); }) .catch(error => { console.log(error); });}getData();</script>
 
-  <!-- Script: Load Channels -->
-  <script>
-    function getData() {
-      fetch("https://tvgo.neocities.org/Json/voot.txt") // change to voot.json if renamed
-        .then(res => {
-          if (!res.ok) throw new Error("Network response was not ok");
-          return res.json();
-        })
-        .then(json => {
-          if (!Array.isArray(json)) {
-            console.error("Expected array, got:", json);
-            document.querySelector("#app").innerHTML =
-              "<p style='color:red;text-align:center;'>Invalid data format.</p>";
-            return;
-          }
 
-          const html = json.map(item => `
-            <div data-name="${item.channel_name}" class="directory-item">
-              <a href="https://tvgo.neocities.org/APPTV/voot?id=${item.id}">
-                <img src="${item.logo}" alt="${item.channel_name}">
-              </a>
-              <a href="https://tvgo.neocities.org/APPTV/voot?id=${item.id}">
-                <b>${item.channel_name}</b>
-              </a>
-            </div>
-          `).join("");
+<style>.content-table {              text-align: center;position: fixed;             color: #333;position: fixed;bottom:0px;bottom:0px ;text-align:center;background-color:gold; border-collapse: collapse; margin: 1px 0;  font-size: 0.9em;  min-width: 100%;  border-radius: 3px ;  overflow: hidden;  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);}.content-table thead tr {  background-color:gold;  color: #ffffff;  text-align: center;  font-weight: bold}.content-table th,.content-table td {color:#fff;  padding:  1px;border:1px solid gold;background:}.content-table tbody tr {  border: 1px solid #dddddd;}.content-table tbody tr:nth-of-type(even) {  background-color: #f3f3f3;}.content-table tbody tr:last-of-type {  border: px solid #009879;}.content-table tbody tr.active-row {  font-weight: bold;  color: #009879;}</style><table class="content-table">  <thead>     <tr>      <th width="30%"><a href="https://t.me/tvgotk"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEgS2KS8R90zouZEqp4NV8v8mXnUaa0CH4ms-RUnJnRLmYj5zdegccxN10-YXkJArUDOzCjksz77YlETLC63edZYUaDyYBaMPWDVDuyDjYV5bhhhYa5FYgu2qHkd0FcCq-Au_2YXSYza4YGnv1WgRR2O_caQI8nR6SRPJFqKVQICOnjzWhsi3VWe5Nzjewg" width="90%" height="40px"></a></th>            <td><a href="https://t.me/tvgotk"><button><b>t.me/tvgotk</b> </button></a></td>            <th width="30%"><a href="https://t.me/tv4wap"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEgdW6vop6CO-Sw5e7USP7uj_dCdoQJWSYALuTqDa0Kh5m7H0jl1rSMltPVtDrlKIWPxGe5HLwMd8z_TnDWYFB-ePgb_DbI5LJozDpyvP0L7sK-W422Cm02k3hzZ0XzNhYaJ2A80MT5l7nlebxLL16uFvTKSNRPNr3Ctb51dVMShgVNDsu5XHpCtdVSbW0g" width="90%" height="40px"></a></th>      <td><a href="https://t.me/tv4wap"> <button><b>t.me/tv4wap</b></button> </a></td> </tr></table>
 
-          document.querySelector("#app").innerHTML = html;
-        })
-        .catch(error => {
-          console.error("Error loading channels:", error);
-          document.querySelector("#app").innerHTML =
-            "<p style='color:red;text-align:center;'>Failed to load channels. Please check your JSON URL.</p>";
-        });
-    }
 
-    // Search function
-    function searchChannels() {
-      var input = document.getElementById('search-input').value.toLowerCase();
-      var channels = document.querySelectorAll('.directory-item');
-      channels.forEach(function (channel) {
-        var name = channel.getAttribute('data-name').toLowerCase();
-        channel.style.display = name.includes(input) ? 'block' : 'none';
-      });
-    }
+<script> function filterChannels() { var selectedGroup = document.getElementById('group-select').value; var channels = document.querySelectorAll('.directory-item'); channels.forEach(function(channel) { if (selectedGroup === 'all' || channel.getAttribute('data-group') === selectedGroup) { channel.style.display = 'inline-block'; } else { channel.style.display = 'none'; } }); } function searchChannels() { var input = document.getElementById('search-input').value.toLowerCase(); var channels = document.querySelectorAll('.directory-item'); channels.forEach(function(channel) { var name = channel.getAttribute('data-name').toLowerCase(); if (name.includes(input)) { channel.style.display = 'inline-block'; } else { channel.style.display = 'none'; } }); } function searchChannelss() { var input = document.getElementById('search-input').value.toLowerCase(); var channels = document.querySelectorAll('.directory-item'); channels.forEach(function(channel) { var name = channel.getAttribute('data-name').toLowerCase(); if (name.includes(input)) { channel.style.display = 'inline-block'; } else { channel.style.display = 'none'; } }); } const checkbox = document.getElementById("checkbox"); checkbox.addEventListener("change", () => { document.body.classList.toggle("dark-mode"); }); </script>
 
-    // Load on page start
-    getData();
-  </script>
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
